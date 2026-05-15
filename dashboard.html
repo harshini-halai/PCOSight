@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <title>Dashboard</title>
+
+
+    <link rel="stylesheet"
+    href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+
+    <nav>
+
+    <div class="logo">
+
+        PCOSight
+
+    </div>
+
+    <div class="nav-links">
+
+        <a href="/">Home</a>
+
+        <a href="/prediction">Prediction</a>
+
+        <a href="/dashboard">Dashboard</a>
+
+        <a href="/awareness">Awareness</a>
+
+    </div>
+
+</nav>
+
+   <div class="dashboard-header">
+
+    <h1>PCOS Analytics Dashboard</h1>
+
+    <p>
+        Monitor prediction results and health insights
+        generated through the PCOSight system.
+    </p>
+
+</div>
+
+<div class="stats-container">
+
+    <div class="stat-box">
+
+        <h2>{{ total_patients }}</h2>
+
+        <p>Total Patients</p>
+
+    </div>
+
+    <div class="stat-box">
+
+        <h2>{{ high_risk }}</h2>
+
+        <p>High Risk Cases</p>
+
+    </div>
+
+    <div class="stat-box">
+
+        <h2>{{ low_risk }}</h2>
+
+        <p>Low Risk Cases</p>
+
+    </div>
+
+    <div class="stat-box">
+
+        <h2>{{ average_bmi }}</h2>
+
+        <p>Average BMI</p>
+
+    </div>
+
+</div>
+
+<div class="chart-container">
+
+    <div class="chart-box">
+
+        <h2>Risk Distribution</h2>
+
+        <canvas id="riskChart"></canvas>
+
+    </div>
+
+</div>
+
+<div class="dashboard-container">
+
+    {% for item in data %}
+
+    <div class="card">
+
+        <h2>{{ item.name }}</h2>
+
+        <p><strong>Age:</strong> {{ item.age }}</p>
+
+        <p><strong>Weight:</strong> {{ item.weight }} kg</p>
+
+        <p><strong>Height:</strong> {{ item.height }} cm</p>
+
+        <p><strong>BMI:</strong> {{ "%.2f"|format(item.bmi) }}</p>
+
+        <p><strong>Cycle:</strong> {{ item.cycle }}</p>
+
+        <p><strong>Hair Growth:</strong> {{ item.hair_growth }}</p>
+
+        <p><strong>Skin Darkening:</strong> {{ item.skin_darkening }}</p>
+
+        <p><strong>Prediction:</strong> {{ item.result }}</p>
+
+    </div>
+
+    {% endfor %}
+
+</div>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+
+const ctx = document.getElementById('riskChart');
+
+new Chart(ctx, {
+
+    type: 'pie',
+
+    data: {
+
+        labels: ['High Risk', 'Low Risk'],
+
+        datasets: [{
+
+            data: ['{{ high_risk }}', '{{ low_risk }}'],
+
+            backgroundColor: ['#f72585', '#7209b7' ],
+
+            borderWidth: 1
+
+        }]
+
+    }
+
+});
+
+</script>
+
+
+
+</body>
+</html>

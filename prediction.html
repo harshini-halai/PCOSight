@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <title>PCOS Prediction</title>
+
+    <link rel="stylesheet"
+    href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+<body>
+
+    <nav>
+
+    <div class="logo">
+
+        PCOSight
+
+    </div>
+
+    <div class="nav-links">
+
+        <a href="/">Home</a>
+
+        <a href="/prediction">Prediction</a>
+
+        <a href="/dashboard">Dashboard</a>
+
+        <a href="/awareness">Awareness</a>
+
+    </div>
+
+</nav>
+
+    <div class="form-container">
+
+    <div class="prediction-header">
+
+    <h1>PCOS Risk Analysis</h1>
+
+    <p>
+        Enter health information below to analyze
+        possible PCOS risk indicators.
+    </p>
+
+</div>
+
+    <form method="POST">
+
+        <input type="text"
+        name="name"
+        placeholder="Enter Full Name"
+        required>
+
+        <input type="number"
+        name="age"
+        placeholder="Enter Age"
+        required>
+
+        <input type="number"
+        step="0.1"
+        name="weight"
+        placeholder="Enter Weight (kg)"
+        required>
+
+        <input type="number"
+        step="0.1"
+        name="height"
+        placeholder="Enter Height (cm)"
+        required>
+
+        <input type="number"
+        name="cycle"
+        placeholder="Menstrual Cycle Length"
+        required>
+
+        <input type="number"
+        name="hair_growth"
+        placeholder="Hair Growth Level (1-10)"
+        required>
+
+        <input type="number"
+        name="skin_darkening"
+        placeholder="Skin Darkening Level (1-10)"
+        required>
+
+        <button type="submit">
+
+            Predict Risk
+
+        </button>
+
+    </form>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <title>Result</title>
+
+    <link rel="stylesheet"
+    href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+<body>
+    <nav>
+
+    <div class="logo">
+
+        PCOSight
+
+    </div>
+
+    <div class="nav-links">
+
+        <a href="/">Home</a>
+
+        <a href="/prediction">Prediction</a>
+
+        <a href="/dashboard">Dashboard</a>
+
+        <a href="/awareness">Awareness</a>
+
+    </div>
+
+</nav>
+
+    <div class="result-container">
+
+    <div class="result-card">
+
+        <h2>Prediction Result</h2>
+
+        <div class="result-status">
+
+            {{ result }}
+
+        </div>
+
+        <div class="bmi-box">
+
+            <h3>Your BMI</h3>
+
+            <p>{{ bmi }}</p>
+
+            <h3>BMI Category</h3>
+
+            <p>{{ bmi_category }}</p>
+
+        </div>
+
+        <div class="tips-box">
+
+            <h3>Health Recommendations</h3>
+
+            {% if result == "High Risk" %}
+
+            <ul>
+
+                <li>Maintain regular physical activity</li>
+
+                <li>Track menstrual cycles regularly</li>
+
+                <li>Consult a healthcare professional</li>
+
+                <li>Reduce processed sugar intake</li>
+
+                <li>Follow balanced nutrition habits</li>
+
+            </ul>
+
+            {% else %}
+
+            <ul>
+
+                <li>Maintain healthy lifestyle habits</li>
+
+                <li>Continue balanced nutrition</li>
+
+                <li>Stay physically active</li>
+
+                <li>Keep regular sleep schedule</li>
+
+                <li>Routine health checkups are recommended</li>
+
+            </ul>
+
+            {% endif %}
+
+        </div>
+
+    </div>
+
+</div>
+   
+
+</div>
+</body>
+</html>
